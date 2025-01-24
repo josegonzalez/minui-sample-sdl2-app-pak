@@ -2,9 +2,11 @@ ifeq (,$(CROSS_COMPILE))
 $(error missing CROSS_COMPILE for this toolchain)
 endif
 
+CURRENT_WORKING_DIR = $(shell pwd)
+
 PLATFORM ?= tg5040
-LD_LIBRARY_PATH = /root/workspace/platform/$(PLATFORM)/lib/
-PREFIX = /root/workspace/platform/$(PLATFORM)
+LD_LIBRARY_PATH = $(CURRENT_WORKING_DIR)/platform/$(PLATFORM)/lib/
+PREFIX = $(CURRENT_WORKING_DIR)/platform/$(PLATFORM)
 
 -include minui/workspace/$(PLATFORM)/platform/makefile.env
 SDL?=SDL
@@ -37,4 +39,4 @@ platform/$(PLATFORM)/include:
 
 # PREFIX is the path to the workspace
 $(PREFIX)/include/msettings.h: platform/$(PLATFORM)/lib platform/$(PLATFORM)/include
-	cd /root/workspace/minui/workspace/$(PLATFORM)/libmsettings && make
+	cd $(CURRENT_WORKING_DIR)/minui/workspace/$(PLATFORM)/libmsettings && make

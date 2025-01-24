@@ -28,20 +28,20 @@ cd union-tg5040-toolchain
 make shell
 ```
 
-Once the shell is setup, you can clone this repository into the toolchain workspace directory. You can run the following commands inside of the toolchain shell or on your host machine (so long as it is run in the toolchain directory).
+Once the shell is setup, you can clone this repository in the toolchain workspace directory. You can run the following commands inside of the toolchain shell or on your host machine (so long as it is run in the workspace directory).
 
 ```shell
-rm -rf workspace
-git clone https://github.com/josegonzalez/minui-sample-sdl2-app workspace
+git clone https://github.com/josegonzalez/minui-sample-sdl2-app
 ```
 
 Once the app is cloned, we'll do a bit of setup. Lets start by ensuring the MinUI repository is available. This is necessary in order to pull in libraries from the MinUI codebase for handling cross-platform building.
 
 ```shell
+cd minui-sample-sdl2-app
 make minui
 ```
 
-Now we build the app:
+Now we build the app. This should be performed inside the toolchain shell.
 
 ```shell
 make
