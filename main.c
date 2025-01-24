@@ -121,6 +121,10 @@ int main(int argc, char *argv[])
 
     while (!state.quitting)
     {
+        // start the frame to ensure GFX_sync() works
+        // on devices that don't support vsync
+        GFX_startFrame();
+
         // handle turning the on/off screen on/off
         // as well as general power management
         PWR_update(&state.redraw, NULL, NULL, NULL);
@@ -156,12 +160,13 @@ int main(int argc, char *argv[])
             // your draw logic goes here
             draw_screen(screen, &state);
 
-            // Not sure what this does just yet
+            // Takes the screen buffer and displays it on the screen
             GFX_flip(screen);
         }
         else
         {
-            // Not sure what this does just yet
+            // Slows down the frame rate to match the refresh rate of the screen
+            // when the screen is not being redrawn
             GFX_sync();
         }
     }
