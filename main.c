@@ -64,6 +64,7 @@ void handle_input(struct AppState *state)
 void draw_screen(SDL_Surface *screen, struct AppState *state)
 {
     // draw the button group on the button-right
+    // only two buttons can be displayed at a time
     GFX_blitButtonGroup((char *[]){"B", "ERROR", "A", "QUIT", NULL}, 1, screen, 1);
 
     // the rest of the function is just for drawing your app to the screen
