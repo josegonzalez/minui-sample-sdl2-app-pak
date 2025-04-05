@@ -1,9 +1,9 @@
 #!/bin/bash
 set -x
-progdir="$(dirname $0)"
+PAK_DIR="$(dirname $0)"
 
 main() {
-    if ! "$progdir/main-$PLATFORM"; then
+    if ! "$PAK_DIR/main-$PLATFORM"; then
         echo "App exited with an error"
         exit 1
     fi
